@@ -1,0 +1,14 @@
+image: node:14.18.1
+
+pages:
+  stage: deploy
+  script:
+  - yarn install
+  - yarn build
+  - rm -rf public
+  - mv build public
+  artifacts:
+    paths:
+    - public
+  only:
+  - main
