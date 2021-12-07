@@ -29,7 +29,7 @@ function App() {
           <Navbar.Toggle />
           <Navbar.Collapse className="justify-content-end">
             <Navbar.Text>
-              Signed in as: <a href="/my-profile"  tabIndex="-1">Mark Otto</a>
+              Signed in as: <a href="#profile"  tabIndex="-1">Mark Otto</a>
             </Navbar.Text>
           </Navbar.Collapse>
         </Container>
@@ -43,10 +43,10 @@ function App() {
               onSelect={selectedKey => null}
             >
               <div className="sidebar-sticky"></div>
-              <Nav.Item><Nav.Link tabIndex="-1" href="/my-profile">My Profile</Nav.Link></Nav.Item>
-              <Nav.Item><Nav.Link tabIndex="-1" href="/settings">Settings</Nav.Link></Nav.Item>
-              <Nav.Item><Nav.Link tabIndex="-1" href="/security">Security</Nav.Link></Nav.Item>
-              <Nav.Item><Nav.Link tabIndex="-1" href="/notifications">Notifications</Nav.Link></Nav.Item>
+              <Nav.Item><Nav.Link tabIndex="-1" href="#profile">My Profile</Nav.Link></Nav.Item>
+              <Nav.Item><Nav.Link tabIndex="-1" href="#settings">Settings</Nav.Link></Nav.Item>
+              <Nav.Item><Nav.Link tabIndex="-1" href="#security">Security</Nav.Link></Nav.Item>
+              <Nav.Item><Nav.Link tabIndex="-1" href="#notifications">Notifications</Nav.Link></Nav.Item>
             </Nav>
           </Col>
 
