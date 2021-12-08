@@ -80,7 +80,7 @@ function App() {
               }) => (
                 <Form noValidate onSubmit={handleSubmit}>
                   <Form.Group as={Row} className="mb-3" controlId="formBasicEmail">
-                    <Form.Label column sm="2">Name *</Form.Label>
+                    <Form.Label column sm="2" className="text-muted">Name *</Form.Label>
                     <Col sm="5">
                       <Form.Control tabIndex="-1" type="text" value={values.firstName} name="firstName" onChange={handleChange} onBlur={handleBlur}
                         isValid={touched.firstName && !errors.firstName} isInvalid={!!errors.firstName} placeholder="First name" />
@@ -103,7 +103,7 @@ function App() {
                   </Form.Group>
 
                   <Form.Group as={Row} className="mb-3" controlId="gender">
-                    <Form.Label column sm="2">Gender *</Form.Label>
+                    <Form.Label column sm="2" className="text-muted">Gender *</Form.Label>
                     <Col sm="10">
                       <Form.Select tabIndex="-1" disabled={true} isValid={touched.gender && !errors.gender} isInvalid={!!errors.gender} onChange={handleChange} value={values.gender} name="gender">
                         <option value="MALE">Male</option>
@@ -113,7 +113,7 @@ function App() {
                   </Form.Group>
 
                   <Form.Group as={Row} className="mb-3" controlId="email">
-                    <Form.Label column sm="2">Email address *</Form.Label>
+                    <Form.Label column sm="2" className="text-muted">Email address *</Form.Label>
                     <Col sm="10">
                       <Form.Control tabIndex="-1" type="email" value={values.emailAddress} onChange={handleChange} onBlur={handleBlur}
                         isValid={touched.emailAddress && !errors.emailAddress} isInvalid={!!errors.emailAddress} name="emailAddress" placeholder="Email address" />
