@@ -22,14 +22,14 @@ function App() {
         <Container>
           <Navbar.Brand href="#dashboard"  tabIndex="-1">Sportify</Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link href="#dashboard" tabIndex="-1">Dashboard</Nav.Link>
-            <Nav.Link href="#training" tabIndex="-1">Training</Nav.Link>
-            <Nav.Link href="#explore" tabIndex="-1">Explore</Nav.Link>
+            <Nav.Link style={{color: "#73A1FF"}} href="#dashboard" tabIndex="-1">Dashboard</Nav.Link>
+            <Nav.Link style={{color: "#73A1FF"}} href="#training" tabIndex="-1">Training</Nav.Link>
+            <Nav.Link style={{color: "#73A1FF"}} href="#explore" tabIndex="-1">Explore</Nav.Link>
           </Nav>
           <Navbar.Toggle />
           <Navbar.Collapse className="justify-content-end">
-            <Navbar.Text>
-              Signed in as: <a href="#profile"  tabIndex="-1">Mark Otto</a>
+            <Navbar.Text style={{color: "#73A1FF"}}>
+              Signed in as: <a href="#profile"  tabIndex="-1">Emily Hû</a>
             </Navbar.Text>
           </Navbar.Collapse>
         </Container>
@@ -37,8 +37,8 @@ function App() {
 
       <Container style={{ marginTop: 30 }}>
         <Row>
-          <Col md={2} id="sidebar-wrapper">
-            <Nav className="col-md-12 d-none d-md-block bg-light sidebar"
+          <Col sm={12} md={2} id="sidebar-wrapper">
+            <Nav className="d-md-block bg-light sidebar"
               activeKey="/my-profile"
               onSelect={selectedKey => null}
             >
@@ -65,7 +65,7 @@ function App() {
                 firstName: "Emily",
                 lastName: "Hû",
                 gender: "MALE",
-                emailAddress: "the.only.emily.hu@icloud.com"
+                emailAddress: "emily.hu@icloud.com"
               }}
             >
               {({
