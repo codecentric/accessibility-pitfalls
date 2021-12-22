@@ -7,8 +7,10 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import {SalutationFormGroup, SALUTATIONS} from "./SalutationFormGroup";
 
 const schema = yup.object().shape({
+  salutation: yup.string().required('Salutation is required').oneOf(Object.keys(SALUTATIONS), 'Must be one of the provided options'),
   firstName: yup.string().required('First name is required').min(3, 'Not long enough').matches(/^[a-zA-Z]+$/, 'No special characters please'),
   lastName: yup.string().required('Last name is required').min(3, 'Not long enough').matches(/^[a-zA-Z]+$/, 'No special characters please'),
   emailAddress: yup.string().email('Please provide a valid email address').required('Email address is required'),
@@ -62,6 +64,7 @@ function App() {
                 }, 100);
               }}
               initialValues={{
+                salutation: "GENDERED",
                 firstName: "Emily",
                 lastName: "Hû",
                 gender: "MALE",
@@ -77,9 +80,12 @@ function App() {
                 isSubmitting,
                 isValid,
                 errors,
+                setFieldValue,
               }) => (
                 <Form noValidate onSubmit={handleSubmit}>
-                  <Form.Group as={Row} className="mb-3" controlId="formBasicEmail">
+                  <SalutationFormGroup {...{ errors, values, setFieldValue }} />
+
+                  <Form.Group as={Row} className="mb-3">
                     <Form.Label column sm="2" className="text-muted">Name *</Form.Label>
                     <Col sm="5">
                       <Form.Control tabIndex="-1" type="text" value={values.firstName} name="firstName" onChange={handleChange} onBlur={handleBlur}

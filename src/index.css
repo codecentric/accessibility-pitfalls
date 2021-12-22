@@ -1,4 +1,4 @@
 
-input {
+input[type="text"], input[type="email"], select {
     min-width: 260px;
 }
