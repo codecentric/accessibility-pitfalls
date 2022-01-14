@@ -2,13 +2,13 @@ import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-export const SalutationFormGroup = ({setFieldValue, errors, values}) => {
-    const genderedSalutation = values.gender === 'MALE' ? 'Mr.' : 'Mrs.'
+export const SalutationFormGroup = ({setFieldValue, values}) => {
     const salutations = {
-        GENDERED: `Hey ${genderedSalutation} ${values.lastName}!`,
-        COMPLETE_NAME: `Hey ${values.firstName} ${values.lastName}!`,
         FIRST_NAME: `Hey ${values.firstName}!`,
+        COMPLETE_NAME: `Hey ${values.firstName} ${values.lastName}!`,
         SIMPLE: `Hey there!`,
+        MISSES: `Hey Mrs. ${values.lastName}!`,
+        MISTER: `Hey Mr. ${values.lastName}!`,
     }
 
     return (

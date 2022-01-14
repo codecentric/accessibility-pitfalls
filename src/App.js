@@ -64,7 +64,7 @@ function App() {
                 }, 100);
               }}
               initialValues={{
-                salutation: "GENDERED",
+                salutation: "FIRST_NAME",
                 firstName: "Emily",
                 lastName: "Hû",
                 gender: "MALE",
