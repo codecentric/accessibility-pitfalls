@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack://src/index.css"],"names":[],"mappings":"AAAA,0CAGI,eACJ","file":"main.372cd8ad.chunk.css","sourcesContent":["input[type='text'],\ninput[type='email'],\nselect {\n    min-width: 260px;\n}\n"]}
