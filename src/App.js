@@ -30,6 +30,7 @@ const App = () => {
             <ButtonGroup style={{ position: 'absolute', bottom: 30, left: 30 }}>
                 {Array.from(Array(4).keys()).map((evolution) => (
                     <Button
+                        key={evolution}
                         tabIndex="-1"
                         variant={
                             evolution === selectedEvolution

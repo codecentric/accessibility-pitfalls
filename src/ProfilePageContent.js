@@ -7,30 +7,40 @@ import Button from 'react-bootstrap/Button'
 import * as yup from 'yup'
 import { NameFormGroup } from './NameFormGroup'
 
-const profileYupSchema = yup.object().shape({
-    salutation: yup
-        .string()
-        .oneOf(Object.keys(SALUTATIONS), 'Must be one of the provided options'),
-    firstName: yup
-        .string()
-        .required('First name is required')
-        .min(3, 'Not long enough')
-        .matches(/^[a-zA-Z]+$/, 'No special characters please'),
-    lastName: yup
-        .string()
-        .required('Last name is required')
-        .min(3, 'Not long enough')
-        .matches(/^[a-zA-Z]+$/, 'No special characters please'),
-    completeName: yup.string().required('Name is required'),
-    emailAddress: yup
-        .string()
-        .email('Please provide a valid email address')
-        .required('Email address is required'),
-    gender: yup.string().oneOf(['MALE', 'FEMALE'], 'Gender is required'),
-})
-
 export const ProfilePageContent = ({ evolution }) => {
     const tabIndex = evolution === 0 ? '-1' : undefined
+    const isNameSeparated = evolution < 2
+    const profileYupSchema = yup.object().shape({
+        salutation: yup
+            .string()
+            .oneOf(
+                Object.keys(SALUTATIONS),
+                'Must be one of the provided options',
+            ),
+        customSalutation: yup.string(),
+        firstName: isNameSeparated
+            ? yup
+                  .string()
+                  .required('First name is required')
+                  .min(3, 'Not long enough')
+                  .matches(/^[a-zA-Z]+$/, 'No special characters please')
+            : undefined,
+        lastName: isNameSeparated
+            ? yup
+                  .string()
+                  .required('Last name is required')
+                  .min(3, 'Not long enough')
+                  .matches(/^[a-zA-Z]+$/, 'No special characters please')
+            : undefined,
+        completeName: isNameSeparated
+            ? undefined
+            : yup.string().required('Name is required'),
+        emailAddress: yup
+            .string()
+            .email('Please provide a valid email address')
+            .required('Email address is required'),
+        gender: yup.string().oneOf(['MALE', 'FEMALE'], 'Gender is required'),
+    })
 
     return (
         <>
@@ -40,7 +50,8 @@ export const ProfilePageContent = ({ evolution }) => {
 
             <Formik
                 validationSchema={profileYupSchema}
-                onSubmit={(values, { setSubmitting }) => {
+                onSubmit={(values, formikBag) => {
+                    const { setSubmitting } = formikBag
                     setTimeout(() => {
                         alert(JSON.stringify(values, null, 2))
                         setSubmitting(false)
@@ -48,6 +59,7 @@ export const ProfilePageContent = ({ evolution }) => {
                 }}
                 initialValues={{
                     salutation: 'FIRST_NAME',
+                    customSalutation: '',
                     firstName: 'Emily',
                     lastName: 'Hû',
                     completeName: 'Emily Hû',
@@ -68,7 +80,7 @@ export const ProfilePageContent = ({ evolution }) => {
                 }) => (
                     <Form noValidate onSubmit={handleSubmit}>
                         <NameFormGroup
-                            isNameSeparated={evolution < 2}
+                            isNameSeparated={isNameSeparated}
                             {...{
                                 errors,
                                 values,
